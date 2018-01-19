@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Welcome to the engine</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<style>
+			.Hide{
+				  display:none;
+				}
+			</style>
+            <script>
+
+                function clickAlertStart() {
+                    alert("Engine is on!!! Press Stop button to stop");
+                }
+                function clickAlertStop() {
+                    alert("Engine is turned off!!! You will be redirected to the engine index");
+                }
+            </script>
+
+
+	<body>
+
+        <h1>Welcome {{ user.username  }}</h1>
+        <h3>Automatically post the total signature in your facebook status</h3><br>
+		<div class="container">
+				<div class="row">
+
+					<div class="col-md-3">
+						<btn class="btn Show btn-xl btn-success " id="start" onclick="clickAlertStart()">
+                            <a href="{% url 'done' %}">Start</a>
+                        </btn>
+					</div>
+
+					<div class="col-md-3" style="">
+						<btn class="btn Hide btn-xl btn-success " id="target" onclick="clickAlertStop()"><a href="{% url 'index' %}">Stop</a></btn>
+					</div>
+
+				</div>
+		</div>
+	</body>
+
+<script>
+        $('.Show').click(function() {
+                    $('#start').hide();
+                    $('#target').show();
+
+                });
+
+                $('.Hide').click(function() {
+                    $('#start').show();
+                    $('#target').hide();
+                });
+</script>
+
+</html>

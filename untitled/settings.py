@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'petition',
-    'social.apps.django_app.default',
     'social_django'
 
 ]
@@ -51,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 
 ]
 
@@ -84,10 +85,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-
-                'social.apps.django_app.context_processors.backends',
-                'social.apps.django_app.context_processors.login_redirect',
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
 
 )
 WSGI_APPLICATION = 'untitled.wsgi.application'
@@ -124,8 +123,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 AUTHENTICATION_BACKENDS = (
-    #'django.contrib.auth.backends.ModelBackend',
-    'social.backends.facebook.FacebookOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 # Internationalization
@@ -146,7 +145,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/'
-SOCIAL_AUTH_FACEBOOK_KEY = '950238511797180'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'e6e612321f36b87ff3d83149512c0228'
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'index'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '140754456611653'
+SOCIAL_AUTH_FACEBOOK_SECRET = '0bd8b7d77237834c0ddcfad0c862f1c4'
 
