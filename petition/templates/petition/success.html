@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Successfully Logged in</title>
+</head>
+<body>
+    <h1>You have been successfully logged in to facebook</h1>
+    Your UID: <b>{{ user.uid }}</b><br><br>
+        You can now set up Cron Job in your terminal<br><br>
+    Step 1: Install cron:  <b>sudo apt-get install cron</b><br><br>
+    Step 2: Create a crontab job: <b>crontab -e</b><br><br>
+    Step 3: Write this command in the new cron file: <b>*/15 * * * * /path/to/untitled/venv/bin/python /path/to/untitled/manage.py facebook_post</b> <br><br>
+        Step 4: Save the cron file and if everything goes fine, new status update will be in every 15 minutes<br><br>
+
+        <b>Note: you may be prompt to input your uid in the process, you may use the uid populated above.</b>
+    </p>
+
+</body>
+</html>
